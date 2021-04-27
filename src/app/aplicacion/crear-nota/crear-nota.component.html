@@ -1,8 +1,8 @@
-<h3>Mis Notas</h3>
+<h3 class="text-center mb-5 mt-5">Mis Notas</h3>
 
-<form [formGroup]="formulario" (ngSubmit)="crear()" class="form__box">
+<form [formGroup]="formulario" class="form__box">
     <div class="mb-3">
-        <label class="form-label">Email address</label>
+        <label class="form-label">Titulo</label>
         <input type="text" class="form-control" placeholder="Nueva nota" formControlName="titulo">
     </div>
     <div class="mb-3">
@@ -10,13 +10,22 @@
         <textarea class="form-control" rows="3" formControlName="descripcion"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-info">Crear</button>
-
-    <div class="mt-2 alert alert-warning" role="alert" *ngIf="titulo.invalid">
-        Hay errores
+    <a [routerLink]="['/listaNotas']" routerLinkActive="router-link-active"  class="btn btn-info" (click)="crear()" *ngIf="titulo.valid && descripcion.valid">Crear</a>
+    <button type="button" class="btn btn-info" disabled *ngIf="titulo.invalid || descripcion.invalid">Crear</button>
+    
+    <div class="mt-2 alert alert-warning" role="alert" *ngIf="titulo.invalid && titulo.value!='' || descripcion.invalid && descripcion.value!=''">
+        <div *ngIf="titulo.errors?.required">
+            El titulo es requerido
+        </div>
+        <div *ngIf="titulo.errors?.minlength">
+            El titulo debe ser de al menos 10 caracteres y maximo 30
+        </div>
+        <div *ngIf="descripcion.errors?.required">
+            La descripción es requerida
+        </div>
+        <div *ngIf="descripcion.errors?.minlength">
+            La descripcion debe ser de al menos 10 caracteres y maximo 150
+        </div>
     </div>
-</form>
 
-<div >
-    <p>Error, el tamaño minimo debe ser 4</p>
-</div>
+</form>

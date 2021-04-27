@@ -1,1 +1,34 @@
-<p>lista-notas works!</p>
+<h3 class="text-center mb-5 mt-5">Lista de notas</h3>
+
+<div class="listaNotas" >
+
+  <div class="list-group mb-5" >
+
+    <div class="list-group-item list-group-item-action" aria-current="true" *ngFor="let item of notas"> 
+      <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{item.titulo}}</h5>
+      </div>
+      <p class="mb-1">{{item.descripcion}}</p>
+    </div>
+  
+  </div>
+
+  <div class="eliminar-nota">
+    <form [formGroup]="formulario" >
+      <label class="form-label">Eliminar nota</label>
+      <input type="text" class="form-control" formControlName="tituloNota" placeholder="Ingrese titulo de la nota" >
+      <button type="button" class="btn btn-info mt-3" disabled *ngIf="tituloNota.invalid">Eliminar Nota</button>
+      <button type="button" class="btn btn-info mt-3" (click)="eliminarNota()" *ngIf="tituloNota.valid">Eliminar Nota</button>
+    </form>
+    
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <a [routerLink]="['/crearNota']" routerLinkActive="router-link-active" class="btn btn-primary mt-5 d-flex d-block" >Adicionar nueva nota</a>
+  </div>
+
+</div>
+
+
+
+  
