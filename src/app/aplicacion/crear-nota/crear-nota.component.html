@@ -1,1 +1,22 @@
-<p>crear-nota works!</p>
+<h3>Mis Notas</h3>
+
+<form [formGroup]="formulario" (ngSubmit)="crear()" class="form__box">
+    <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="text" class="form-control" placeholder="Nueva nota" formControlName="titulo">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <textarea class="form-control" rows="3" formControlName="descripcion"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-info">Crear</button>
+
+    <div class="mt-2 alert alert-warning" role="alert" *ngIf="titulo.invalid">
+        Hay errores
+    </div>
+</form>
+
+<div >
+    <p>Error, el tamaño minimo debe ser 4</p>
+</div>

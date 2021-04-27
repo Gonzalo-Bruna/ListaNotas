@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrearNotaComponent } from './aplicacion/crear-nota/crear-nota.component';
 import { ListaNotasComponent } from './aplicacion/lista-notas/lista-notas.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ListaNotasComponent } from './aplicacion/lista-notas/lista-notas.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
